@@ -15,16 +15,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: RoundedTextField!
     @IBOutlet weak var passWordTextField: RoundedTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         // UI Work
         logo.translatesAutoresizingMaskIntoConstraints = false
         self.logo.setImageAndShadow(image: UIImage(named: "logo3")!)
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = backgroundImage.bounds
-        backgroundImage.addSubview(blurEffectView)
+       
         passWordTextField.placeholder = "Enter Password"
         emailTextField.placeholder = "Enter Email Address"
         // Delegates
@@ -34,6 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if FIRAuth.auth()?.currentUser != nil {
             self.performSegue(withIdentifier: "loggedIn", sender: nil)
         }
+        
     }
     
     func assignbackground(){

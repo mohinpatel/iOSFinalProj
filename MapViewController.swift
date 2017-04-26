@@ -35,10 +35,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         manager.delegate = self
         map.delegate = self
         
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = background.bounds
-        background.addSubview(blurEffectView)
         userTable.backgroundColor = UIColor.clear
         
         let longPressRecogniser = UITapGestureRecognizer(target: self, action: #selector(handleLongPress))

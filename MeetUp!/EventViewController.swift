@@ -20,10 +20,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = background.bounds
-        background.addSubview(blurEffectView)
+
         
         tableView.backgroundColor = UIColor.clear
         

@@ -27,7 +27,7 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = background.bounds
         background.addSubview(blurEffectView)

@@ -19,15 +19,19 @@ class LoginButton: UIButton {
     */
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 20.0
+        layer.cornerRadius = 0.5 * self.bounds.size.height
         
         //        clipsToBounds = true
         //        contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         //        setTitleColor(tintColor, forState: .Normal)
         //        setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
-        let color = UIColor(hue: 205/360, saturation: 100/100, brightness: 84/100, alpha: 1.0)
+        let color = UIColor.red
+            
+            //UIColor(hue: 205/360, saturation: 100/100, brightness: 84/100, alpha: 1.0)
         layer.backgroundColor = color.cgColor
     }
 }

@@ -22,10 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // UI work
         logo.translatesAutoresizingMaskIntoConstraints = false
         self.logo.setImageAndShadow(image: UIImage(named: "logo3")!)
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = backgroundImage.bounds
-        backgroundImage.addSubview(blurEffectView)
+
         rePassWordTextField.placeholder = "Re-Enter Password"
         passWordTextField.placeholder = "Enter Password"
         emailTextField.placeholder = "Enter Email Address"

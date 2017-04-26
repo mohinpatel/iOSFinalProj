@@ -21,7 +21,7 @@ class RoundedTextField: UITextField {
         super.init(coder: aDecoder)
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 20.0
+        layer.cornerRadius = self.frame.height/2
 //        clipsToBounds = true
 //        contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 //        setTitleColor(tintColor, forState: .Normal)
