@@ -383,7 +383,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RQM-cJ-o1i"/>
                                 </constraints>
-                                <state key="normal" title="Create Event"/>
+                                <state key="normal" title="Create Event">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="makeEvent:" destination="SeH-MO-ucf" eventType="touchUpInside" id="iM0-e3-OYs"/>
                                     <segue destination="ccm-bH-IDM" kind="show" identifier="createdEvent" id="Hm3-Ck-tSQ"/>
@@ -724,6 +726,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YUr-CY-Hux"/>
-        <segue reference="OAw-eP-R6T"/>
+        <segue reference="Hm3-Ck-tSQ"/>
     </inferredMetricsTieBreakers>
 </document>
