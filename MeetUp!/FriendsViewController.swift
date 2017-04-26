@@ -24,6 +24,7 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     var event: EventModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        eventName.delegate = self
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
