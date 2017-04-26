@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var createEvent: LoginButton!
@@ -150,6 +150,10 @@ class FriendsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     @IBAction func cancel(_ sender: UIButton) {
         self.performSegue(withIdentifier: "cancel", sender: nil)
     }
-
+    //Text Field delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
 }
