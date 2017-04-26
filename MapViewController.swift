@@ -188,9 +188,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         let user = self.event?.users[indexPath.row]
         cell.userLabel.text = user
         if usersCheckedIn.contains(user!) {
+            cell.userTapped.isHidden = false
             cell.userTapped.image = UIImage(named: "checkmark")
         } else {
-            cell.userTapped.image = UIImage(named: "white")
+            cell.userTapped.isHidden = true
         }
         cell.backgroundColor = UIColor.clear
         return cell

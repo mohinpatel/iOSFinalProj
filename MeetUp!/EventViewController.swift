@@ -83,8 +83,12 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
-    @IBAction func unwindToMenuFromMap(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
+    @IBAction func unwindToMenuFromMap(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {

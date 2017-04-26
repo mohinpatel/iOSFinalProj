@@ -14,6 +14,7 @@ class MapCell: UITableViewCell {
     @IBOutlet weak var userTapped: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         // Initialization code
     }
 
