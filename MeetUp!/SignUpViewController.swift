@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // UI work
         logo.translatesAutoresizingMaskIntoConstraints = false
-        self.logo.setImageAndShadow(image: UIImage(named: "logo3")!)
+        self.logo.setImageAndShadow(image: UIImage(named: "logo4")!)
 
         rePassWordTextField.placeholder = "Re-Enter Password"
         passWordTextField.placeholder = "Enter Password"

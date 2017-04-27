@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
         // UI Work
         logo.translatesAutoresizingMaskIntoConstraints = false
-        self.logo.setImageAndShadow(image: UIImage(named: "logo3")!)
+        self.logo.setImageAndShadow(image: UIImage(named: "logo4")!)
        
         passWordTextField.placeholder = "Enter Password"
         emailTextField.placeholder = "Enter Email Address"
