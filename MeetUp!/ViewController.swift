@@ -29,6 +29,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passWordTextField.delegate = self
         //Firebase
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         if FIRAuth.auth()?.currentUser != nil {
             self.performSegue(withIdentifier: "loggedIn", sender: nil)
         }

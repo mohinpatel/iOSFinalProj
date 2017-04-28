@@ -11,6 +11,7 @@ import MapKit
 import Firebase
 class MapViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
 
+    @IBOutlet weak var meetUP: LoginButton!
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var userTable: UITableView!
     @IBOutlet weak var map: MKMapView!
@@ -34,7 +35,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         super.viewDidLoad()
         manager.delegate = self
         map.delegate = self
-        
+        meetUP.isHidden = true
         userTable.backgroundColor = UIColor.clear
         
         let longPressRecogniser = UITapGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -98,12 +99,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
             if let pin = self.userPin {
                 allPins += [pin]
             }
-            if allPins.count > 0 {
+            if allPins.count > 1 {
                 self.map.addAnnotations(allPins)
                 //centroid
                 let centroid = self.event!.centroid(pins: allPins)
                 self.meetUp = UsersPin(userLocation: centroid, userName: "MeetUp!", identifier: "MeetUp!")
                 self.map.addAnnotation(self.meetUp!)
+                self.meetUP.isHidden = false
             }
             self.userTable.reloadData()
         })
@@ -163,9 +165,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
             reference2.setValue(firPin)
         }
         let allPins = self.pins + [self.userPin!]
-
-        self.meetUp = UsersPin(userLocation: event!.centroid(pins: allPins), userName: "MeetUp!", identifier: "MeetUp!")
-        map.addAnnotation(self.meetUp!)
+        if allPins.count > 1 {
+            self.meetUp = UsersPin(userLocation: event!.centroid(pins: allPins), userName: "MeetUp!", identifier: "MeetUp!")
+            map.addAnnotation(self.meetUp!)
+            self.meetUP.isHidden = false
+        }
         if reloadTable {
             self.userTable.reloadData()
         }
@@ -196,6 +200,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
         cell.backgroundColor = UIColor.clear
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let name = event?.users[indexPath.row]
+        let allPins = self.pins + [self.userPin!]
+        for pin in allPins{
+            if pin.title == name {
+                let coordinate = pin.coordinate
+                let CL = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                self.centerMap(location: CL)
+            }
+        }
+    }
     func usersWithPins() -> [String] {
         var usersClickedIn: [String] = []
         for pin in self.pins {
@@ -220,18 +235,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UITableVie
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 
-                if annotation.identifier == "User" {
-                    view.pinTintColor = MKPinAnnotationView.purplePinColor()
-                    
-                } else {
-                    view.pinTintColor = MKPinAnnotationView.redPinColor()
-                }
-            return view
             }
+            if annotation.identifier == "User" {
+                view.pinTintColor = MKPinAnnotationView.purplePinColor()
+                
+            } else {
+                view.pinTintColor = MKPinAnnotationView.redPinColor()
+            }
+            return view
         }
         return nil
     }
         
+    @IBAction func meetUp(_ sender: LoginButton) {
+        if let meet = self.meetUp {
+            let CL = CLLocation(latitude: meet.coordinate.latitude, longitude: meet.coordinate.longitude )
+            self.centerMap(location: CL)
+        }
+    }
     /*
     // MARK: - Navigation
 
